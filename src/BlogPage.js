@@ -12,7 +12,7 @@ class Blog extends Component {
        <div className="blog-page">
            <h2>BlogPage</h2>
            <Switch>
-                <Route path="/blog" component={BlogList}/>
+                <Route exact path="/blog" component={BlogList}/>
                 <Route path="/blog/:id" component={BlogDetail}/>
            </Switch>
            <Link to="/">Back to Home</Link>
