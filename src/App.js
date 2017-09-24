@@ -4,26 +4,23 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import ItemListPage from './ItemListPage'
 import AddItemPage from './AddItemPage'
 import EditItemPage from './EditItemPage'
+import { withLoading } from './HOC'
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      isLoading: false,
       item: []
     } 
   }
 
 
   componentDidMount(){
-    this.setState({
-      isLoading: true
-    })
+    const { loading, loaded } = this.props
     fetch('http://localhost:3030/item')
     .then((res) => res.json())
     .then((res) => {
       this.setState({
-        isLoading: false,
         item: res
       })
     })
@@ -75,7 +72,6 @@ class App extends Component {
   }
 
   deleteItem(id){
-    alert(id)
     const option = {
       method: 'DELETE',
     }
@@ -92,18 +88,6 @@ class App extends Component {
         })
       }))
   }
-
-  // deleteItem(id){
-  //   this.setState ({
-  //     item: this.state.item.filter((v) => {
-  //       if (v.id == id) {
-  //         return false
-  //       } else {
-  //         return true
-  //       }
-  //     })
-  //   })
-  // }
 
   renderAddItemPage(props){
       return <AddItemPage {...props} onAddItem={this.addItem.bind(this)} />
@@ -131,7 +115,7 @@ class App extends Component {
        <BrowserRouter>
           <div className="app">
               <Switch>
-                {this.state.isLoading ? <div>Loading...</div> : null}
+                {this.props.isLoading ? <div>Loading...</div> : null}
                 <Route exact path="/" component={(props) => this.renderItemListPage(props)}/>
                 <Route path="/add" component={(props) => this.renderAddItemPage(props)}/>
                 <Route path="/edit/:id" component={(pros) => this.renderEditItemPage(pros)}/>

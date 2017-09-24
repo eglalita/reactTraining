@@ -1,23 +1,16 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import FormItem from './Additem'
+import { withLoading } from './HOC'
 
 
 
 class AddItempage extends Component {
     
- constructor(props){
-     super(props)
-     this.state = {
-         isLoading: false
-     }
- }
 
  handleAddItem(text){
-     const { onAddItem, history} = this.props
-     this.setState({
-         isLoading: true
-     })
+     const { onAddItem, history, loading} = this.props
+     loading()
      onAddItem(text).then(() => history.push('/'))
 
 
@@ -30,11 +23,11 @@ class AddItempage extends Component {
             <h2>Add Item Page</h2>
             <div>
                 <FormItem  onClick={(text) => this.handleAddItem(text)}/>
-                    {this.state.isLoading ? <div>Loading...</div> : null}
+                    {this.props.isLoading ? <div>Loading...</div> : null}
             </div>
         </div>
    )
  }
 }
 
-export default AddItempage;
+export default withLoading(AddItempage)
