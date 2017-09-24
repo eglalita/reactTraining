@@ -6,16 +6,16 @@ import {Link} from 'react-router-dom'
 class BlogDetail extends Component {
     
  render() {
-    //  console.log(this.props)
+    //console.log(this.props)
     //const {match} = this.props
     // setTimeout(()=>{
     //     this.props.history.push('/')
     // }, 3000)
-    const {match} =  this.props
-    const {params} = match
-    const {id} = params
+    // const {match} =  this.props
+    // const {params} = match
+    // const {id} = params
 
-    const {match: {params: {id}}} = this.props //similar with previous 3 lines
+    // const {match: {params: {id}}} = this.props //similar with previous 3 lines
 
    return (
        <div className="blog-detail">
