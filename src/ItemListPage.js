@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import AddItem from './Additem'
+import FormItem from './FormItem'
 import ItemList from './ItemList'
 
 

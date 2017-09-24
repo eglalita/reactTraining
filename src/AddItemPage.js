@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import AddItem from './Additem'
+import FormItem from './Additem'
 
 
 
@@ -18,7 +18,7 @@ class AddItempage extends Component {
         <div>
             <h2>Add Item Page</h2>
             <div>
-                <AddItem  onClick={(text) => this.handleAddItem(text)}/>
+                <FormItem  onClick={(text) => this.handleAddItem(text)}/>
             </div>
         </div>
    )

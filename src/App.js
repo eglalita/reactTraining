@@ -28,6 +28,11 @@ class App extends Component {
       return <AddItemPage {...props} onAddItem={this.addItem.bind(this)} />
   }
 
+  renderEditItemPage(props){
+    const { item } = this.state
+    return <EditItemPage {...props} onEditItem={() => {}} item={item} />
+}
+
   renderItemListPage(props){
     const {item} = this.state
     return <ItemListPage {...props} item={item} />
@@ -39,7 +44,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={(props) => this.renderItemListPage(props)}/>
                 <Route path="/add" component={(props) => this.renderAddItemPage(props)}/>
-                <Route path="/edit" component={EditItemPage}/>
+                <Route path="/edit/:id" component={(pros) => this.renderEditItemPage(pros)}/>
               </Switch>
           </div>
        </BrowserRouter>

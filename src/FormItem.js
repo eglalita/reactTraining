@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 
 
-class AddItem extends Component {
+class FormItem extends Component {
     handleClick(){
         const {textField} = this.refs
         const {onClick} = this.props
@@ -12,14 +12,14 @@ class AddItem extends Component {
         }
     }
  render() {
-     const { defaultVaule } = this.props
+     const { defaultValue } = this.props
    return (
-       <div className="add-item">
-           <input type="text" ref="textField" defaultValue={defaultVaule}/>
+       <div className="form-item">
+           <input type="text" ref="textField" defaultValue={defaultValue}/>
            <button onClick={()=>this.handleClick()}>Add</button>
        </div>
    )
  }
 }
 
-export default AddItem;
+export default FormItem;
