@@ -1,22 +1,33 @@
 import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import HomePage from './HomePage'
-import BlogPage from './BlogPage'
-
-import PageNotFound from './PageNotFound'
+import ItemListPage from './ItemListPage'
+import AddItemPage from './AddItemPage'
+import EditItemPage from './EditItemPage'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      id: 1,
+      item: [ { id: 1,
+                text: 'item1'
+              },
+            ]
+    } 
+  }
+  renderItemListPage(props){
+    const {item} = this.state
+    return <ItemListPage {...props} item={item} />
+  }
   render() {
     return (
        <BrowserRouter>
           <div className="app">
               <Switch>
-                <Route exact path="/" component={HomePage}/>
-                {/* <Route exact path="/blog" component={BlogList}/>
-                <Route exact path="/blog/:id" component={BlogDetail}/> */}
-                <Route path="/blog" component={BlogPage}/>
-                <Route path="/*" component={PageNotFound}/>
+                <Route exact path="/" component={(props) => this.renderItemListPage(props)}/>
+                <Route path="/add" component={AddItemPage}/>
+                <Route path="/edit" component={EditItemPage}/>
               </Switch>
           </div>
        </BrowserRouter>
