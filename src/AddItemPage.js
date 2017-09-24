@@ -6,10 +6,21 @@ import FormItem from './Additem'
 
 class AddItempage extends Component {
     
+ constructor(props){
+     super(props)
+     this.state = {
+         isLoading: false
+     }
+ }
+
  handleAddItem(text){
      const { onAddItem, history} = this.props
-     onAddItem(text)
-     history.push('/')
+     this.setState({
+         isLoading: true
+     })
+     onAddItem(text).then(() => history.push('/'))
+
+
  }
 
  render() {
@@ -19,6 +30,7 @@ class AddItempage extends Component {
             <h2>Add Item Page</h2>
             <div>
                 <FormItem  onClick={(text) => this.handleAddItem(text)}/>
+                    {this.state.isLoading ? <div>Loading...</div> : null}
             </div>
         </div>
    )

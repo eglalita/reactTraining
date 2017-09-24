@@ -6,17 +6,17 @@ class EditItempage extends Component {
     
     handleEdit(text){
         const { onEditItem, history, match: { params: { id } } } = this.props
-        onEditItem(id, text)
-        history.push('/')
+        onEditItem(id, text).then(() => history.push('/'))
     } 
 
     handleDelete(id){
         const {onDeleteItem , history } = this.props 
-        onDeleteItem(id)
-        history.push('/')
+        onDeleteItem(id).then(() => history.push('/'))
     }
 
     render() {
+
+        
         const { item , match: {params: { id } } } = this.props
         let text = ''
         item.forEach((v, i) => {
