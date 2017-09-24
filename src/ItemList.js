@@ -5,11 +5,11 @@ import Item from './Item'
 class ItemList extends Component {
 
  render() {
-     const {item} = this.props
+     const {item, onItemClick} = this.props
    return (
         <ul className = "item-list">
             {
-                item.map((value)=> <Item key={value.id}>{value.text} </Item>)
+                item.map((value)=> <Item key={value.id} handleClick={() => onItemClick(value.id)} >{value.text} </Item>)
             }
         </ul>
    )

@@ -6,9 +6,9 @@ class Item extends Component {
 
 
  render() {
-     const {children, itemRemove} = this.props
+     const {children, handleClick} = this.props
    return (
-       <li className="item" onClick={()=>itemRemove()}>{children}</li>
+       <li className="item" onClick={()=>handleClick()}>{children}</li>
    )
  }
 }

@@ -7,8 +7,10 @@ class EditItempage extends Component {
     
  render() {
    return (
-        <div className="blog-list">
-            
+        <div className="edit-item-page">
+            <h2>Edit Item Page</h2>
+                <div>
+                </div>
         </div>
    )
  }
