@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import HomePage from './HomePage'
+import BlogPage from './BlogPage'
+
+import PageNotFound from './PageNotFound'
 
 class App extends Component {
   render() {
@@ -8,9 +12,11 @@ class App extends Component {
        <BrowserRouter>
           <div className="app">
               <Switch>
-                <Route exact path="/" component={Temp}/>
-                <Route exact path="/a" component={Temp2}/>
-                <Route exact path="/a/b" component={Temp3}/>
+                <Route exact path="/" component={HomePage}/>
+                {/* <Route exact path="/blog" component={BlogList}/>
+                <Route exact path="/blog/:id" component={BlogDetail}/> */}
+                <Route path="/blog" component={BlogPage}/>
+                <Route path="/*" component={PageNotFound}/>
               </Switch>
           </div>
        </BrowserRouter>
