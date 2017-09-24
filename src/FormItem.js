@@ -16,7 +16,7 @@ class FormItem extends Component {
    return (
        <div className="form-item">
            <input type="text" ref="textField" defaultValue={defaultValue}/>
-           <button onClick={()=>this.handleClick()}>Add</button>
+           <button onClick={()=>this.handleClick()}>Submit</button>
        </div>
    )
  }

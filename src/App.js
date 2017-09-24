@@ -24,14 +24,48 @@ class App extends Component {
     })
   }
 
+  editItem(id, text){
+    this.setState({
+      item: this.state.item.map((v) => {
+          if(v.id ==id){
+            return {
+                ...v,
+                text
+            }
+          } else {
+            return v
+          }
+      })
+    })
+  }
+
+  deleteItem(id){
+    this.setState ({
+      item: this.state.item.filter((v) => {
+        if (v.id == id) {
+          return false
+        } else {
+          return true
+        }
+      })
+    })
+  }
+
   renderAddItemPage(props){
       return <AddItemPage {...props} onAddItem={this.addItem.bind(this)} />
   }
 
   renderEditItemPage(props){
     const { item } = this.state
-    return <EditItemPage {...props} onEditItem={() => {}} item={item} />
-}
+    return <EditItemPage {...props} 
+      onEditItem={this.editItem.bind(this)}
+      item={item} 
+      onDeleteItem={this.deleteItem.bind(this)}
+    
+    />
+  }
+
+  
 
   renderItemListPage(props){
     const {item} = this.state
